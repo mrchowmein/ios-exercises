@@ -1,4 +1,4 @@
-//
+    //
 //  StarTrekArrays.m
 //  BlocExercises
 //
@@ -11,23 +11,41 @@
 @implementation StarTrekArrays
 
 - (NSArray *) arrayOfStarTrekCharactersFromString:(NSString *)characterString {
-    /* WORK HERE */
-    return @[];
+    
+    NSArray *charArray = [characterString componentsSeparatedByString:@";"];
+    
+    return charArray;
 }
 
 - (NSString *) stringOfStarTrekCharactersFromArray:(NSArray *)characterArray {
-    /* WORK HERE */
-    return @"";
+    
+    NSString *charString = [characterArray componentsJoinedByString:@";"];
+    
+    
+    return charString;
 }
 
 - (NSArray *) alphabeticallySortedStarTrekCharactersFromArray:(NSArray *)characterArray {
-    /* WORK HERE */
-    return @[];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSArray *sortedArray = [characterArray sortedArrayUsingDescriptors:@[sort]];
+    
+    return sortedArray;
 }
 
 - (BOOL) characterArrayContainsWorf:(NSArray *)characterArray {
-    /* WORK HERE */
-    return NO;
+    
+    
+    NSPredicate *containWorf = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] 'worf'"];
+   [characterArray filteredArrayUsingPredicate:containWorf];
+    
+    if (characterArray.count >= 1){
+        return YES;
+    } else
+    {
+        return NO;
+    }
+
 }
 
 @end
