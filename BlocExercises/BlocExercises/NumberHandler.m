@@ -18,9 +18,11 @@
 }
 
 - (NSArray *) arrayOfNumbersBetweenNumber:(NSInteger)number andOtherNumber: (NSInteger)otherNumber {
+    NSInteger lowNum = MIN(number, otherNumber);
+    NSInteger highNum = MAX(number, otherNumber);
     
     NSMutableArray *between = [NSMutableArray new];
-    for (NSInteger i = number; i <= otherNumber; i++)  {
+    for (NSInteger i = lowNum; i <= highNum; i++)  {
         [between addObject:@(i)];
     }
     return between;
